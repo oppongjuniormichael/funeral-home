@@ -9,12 +9,12 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    lines: ["123 Serenity Avenue", "Accra, Ghana"],
+    lines: ["Agona Swedru", "Central Region, Ghana"],
   },
   {
     icon: Phone,
     title: "Call Us",
-    lines: ["+233 (0) 00 000 0000", "+233 (0) 00 000 0001"],
+    lines: ["0208140278", "0332020301"],
   },
   {
     icon: Mail,
@@ -90,14 +90,14 @@ export default function ContactPage() {
               </h2>
               <div className="rounded-2xl overflow-hidden border border-accent/40 shadow-sm h-[400px] lg:h-full min-h-[300px]">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.3927640396655!2d-0.1869644!3d5.6505706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMzknMDIuMSJOIDDCsDExJzEzLjEiVw!5e0!3m2!1sen!2sgh!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.0!2d0.8667!3d5.2333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf89a26d6d6d6d7%3A0xb8c0e8c0e8c0e8c0!2sAgona%20Swedru!5e0!3m2!1sen!2sgh!4v1711612800000"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Donkor And Sons Transition Home Location"
+                  title="Donkor And Sons Transition Home Location - Agona Swedru"
                 />
               </div>
             </motion.div>
