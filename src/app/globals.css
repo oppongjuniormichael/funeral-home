@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #3E2723;
+  --color-primary-light: #8D6E63;
+  --color-accent: #D7CCC8;
+  --color-background: #FFF8F0;
+  --color-surface: #FFFFFF;
+  --color-text: #1A1A1A;
+  --color-text-muted: #5D4037;
+  --color-gold: #C9A96E;
+
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Swiper custom styles */
+.swiper-pagination-bullet {
+  background: var(--color-accent) !important;
+  opacity: 0.6 !important;
+}
+.swiper-pagination-bullet-active {
+  background: var(--color-gold) !important;
+  opacity: 1 !important;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--color-gold) !important;
+}
