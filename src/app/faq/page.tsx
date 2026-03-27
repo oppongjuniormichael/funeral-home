@@ -7,7 +7,10 @@ import AnimatedHero from "@/components/AnimatedHero";
 import FaqAccordion from "@/components/FaqAccordion";
 import { faqs } from "@/data/faq";
 
-const faqCategories = ["All", ...Array.from(new Set(faqs.map((f) => f.category)))];
+const faqCategories = [
+  "All",
+  ...Array.from(new Set(faqs.map((f) => f.category))),
+];
 
 export default function FaqPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -26,7 +29,7 @@ export default function FaqPage() {
   return (
     <>
       <AnimatedHero
-        image="https://images.pexels.com/photos/13084352/pexels-photo-13084352.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        image="/faq-hero.jpeg"
         title="Frequently Asked Questions"
         subtitle="Find answers to common questions about our services, rentals, and more"
       />

@@ -7,33 +7,42 @@ import Link from "next/link";
 
 const slides = [
   {
-    image: "https://images.pexels.com/photos/7317874/pexels-photo-7317874.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    image:
+      "https://images.pexels.com/photos/7317874/pexels-photo-7317874.jpeg?auto=compress&cs=tinysrgb&w=1600",
     title: "Honoring Lives with Dignity",
-    subtitle: "Donkor And Sons — compassionate funeral services for your loved ones",
+    subtitle:
+      "Donkor And Sons — compassionate funeral services for your loved ones",
     cta: { label: "Our Services", href: "/services/furniture-shop" },
   },
   {
-    image: "https://images.pexels.com/photos/10485372/pexels-photo-10485372.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    image:
+      "https://images.pexels.com/photos/10485372/pexels-photo-10485372.jpeg?auto=compress&cs=tinysrgb&w=1600",
     title: "Premium Caskets & Furniture",
-    subtitle: "Browse our collection of finely crafted caskets, chairs, and memorial furniture",
+    subtitle:
+      "Browse our collection of finely crafted caskets, chairs, and memorial furniture",
     cta: { label: "Shop Furniture", href: "/services/furniture-shop" },
   },
   {
-    image: "https://images.pexels.com/photos/1729993/pexels-photo-1729993.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    image:
+      "https://images.pexels.com/photos/1729993/pexels-photo-1729993.jpeg?auto=compress&cs=tinysrgb&w=1600",
     title: "Hearse & Transport Services",
-    subtitle: "Dignified transportation for your loved ones with our fleet of vehicles",
+    subtitle:
+      "Dignified transportation for your loved ones with our fleet of vehicles",
     cta: { label: "View Rentals", href: "/services/rentals" },
   },
   {
-    image: "https://images.pexels.com/photos/872831/pexels-photo-872831.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    image:
+      "https://images.pexels.com/photos/872831/pexels-photo-872831.jpeg?auto=compress&cs=tinysrgb&w=1600",
     title: "Canopies & Event Rentals",
-    subtitle: "Beautiful canopies, tents, and seating for memorial services and gatherings",
+    subtitle:
+      "Beautiful canopies, tents, and seating for memorial services and gatherings",
     cta: { label: "View Rentals", href: "/services/rentals" },
   },
   {
-    image: "https://images.pexels.com/photos/6629774/pexels-photo-6629774.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    image: "/serene.png",
     title: "Serene Venues & Chapel",
-    subtitle: "Peaceful indoor and outdoor spaces for dignified farewell ceremonies",
+    subtitle:
+      "Peaceful indoor and outdoor spaces for dignified farewell ceremonies",
     cta: { label: "Contact Us", href: "/contact" },
   },
 ];

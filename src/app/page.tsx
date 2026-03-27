@@ -86,8 +86,7 @@ export default function HomePage() {
               <div
                 className="relative h-80 sm:h-96 rounded-2xl overflow-hidden bg-cover bg-center shadow-xl"
                 style={{
-                  backgroundImage:
-                    "url(https://images.pexels.com/photos/7317916/pexels-photo-7317916.jpeg?auto=compress&cs=tinysrgb&w=800)",
+                  backgroundImage: "url(/home-page.jpeg)",
                 }}
               >
                 <div className="absolute inset-0 bg-primary/20" />
@@ -106,10 +105,10 @@ export default function HomePage() {
                 A Legacy of Compassion & Dignity
               </h2>
               <p className="mt-4 text-text-muted leading-relaxed">
-                For over 25 years, Donkor And Sons has been the trusted
-                partner for families during their most difficult moments. We
-                combine traditional values with modern services to ensure every
-                farewell is as unique as the life it celebrates.
+                For over 25 years, Donkor And Sons has been the trusted partner
+                for families during their most difficult moments. We combine
+                traditional values with modern services to ensure every farewell
+                is as unique as the life it celebrates.
               </p>
               <p className="mt-3 text-text-muted leading-relaxed">
                 Our dedicated team handles every detail with care — from
@@ -203,7 +202,13 @@ export default function HomePage() {
       </section>
 
       {/* CTA Banner */}
-      <section className="relative py-20 bg-cover bg-center" style={{ backgroundImage: "url(https://images.pexels.com/photos/7317885/pexels-photo-7317885.jpeg?auto=compress&cs=tinysrgb&w=1600)" }}>
+      <section
+        className="relative py-20 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url(https://images.pexels.com/photos/7317885/pexels-photo-7317885.jpeg?auto=compress&cs=tinysrgb&w=1600)",
+        }}
+      >
         <div className="absolute inset-0 bg-primary/85" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <motion.div

@@ -32,7 +32,7 @@ export default function ContactPage() {
   return (
     <>
       <AnimatedHero
-        image="https://images.pexels.com/photos/695644/pexels-photo-695644.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        image="/contact-hero.jpeg"
         title="Contact Us"
         subtitle="We're here to help — reach out to our caring team anytime"
       />
