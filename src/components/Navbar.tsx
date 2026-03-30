@@ -50,15 +50,14 @@ export default function Navbar() {
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gold text-primary font-heading font-bold text-lg">
-              D
-            </div>
+            <img
+              src="/images/logo.png"
+              alt="Donkor And Sons Logo"
+              className="w-10 h-10 rounded-full object-cover"
+            />
             <div>
               <span className="block text-lg font-heading font-bold text-white leading-tight">
-                Donkor And Sons
-              </span>
-              <span className="block text-xs text-accent tracking-widest uppercase">
-                Transition Home
+                Donkor & Sons
               </span>
             </div>
           </Link>

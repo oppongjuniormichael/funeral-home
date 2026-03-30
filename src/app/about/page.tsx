@@ -36,22 +36,22 @@ const team = [
   {
     name: "Elder Joseph Mensah",
     role: "Founder & Director",
-    image: "https://images.pexels.com/photos/7317943/pexels-photo-7317943.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images.pexels.com/photos/2218786/pexels-photo-2218786.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     name: "Grace Osei-Bonsu",
     role: "Operations Manager",
-    image: "https://images.pexels.com/photos/886616/pexels-photo-886616.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     name: "Samuel Adjei",
     role: "Head of Funeral Services",
-    image: "https://images.pexels.com/photos/10485632/pexels-photo-10485632.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     name: "Abena Frimpong",
     role: "Client Relations",
-    image: "https://images.pexels.com/photos/4491272/pexels-photo-4491272.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
 ];
 
@@ -59,7 +59,7 @@ export default function AboutPage() {
   return (
     <>
       <AnimatedHero
-        image="https://images.pexels.com/photos/10485641/pexels-photo-10485641.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        image="/images/Whisk_595859b7a2890009a964e190065b622fdr.jpeg"
         title="About Donkor And Sons"
         subtitle="A legacy of compassion, dignity, and excellence spanning over two decades"
       />
@@ -81,24 +81,27 @@ export default function AboutPage() {
                 Serving Families Since 2001
               </h2>
               <p className="mt-5 text-text-muted leading-relaxed">
-                Donkor And Sons was founded by Elder Joseph Mensah with a
-                simple yet profound vision: to provide families with
-                compassionate, affordable, and dignified funeral services during
-                their most difficult moments.
+                Donkor And Sons was founded by Elder Joseph Mensah with a vision 
+                to provide compassionate, affordable, and dignified funeral services 
+                during life's most difficult moments. Over the years, we've expanded 
+                to serve the community in two distinct ways.
               </p>
               <p className="mt-4 text-text-muted leading-relaxed">
-                What began as a small family-run operation has grown into a
-                trusted institution, serving thousands of families across Ghana.
-                Today, we offer a comprehensive range of services — from
-                premium caskets and memorial furniture to event venue rentals
-                and full funeral coordination.
+                <strong>Our Funeral Services Team</strong> consists of certified 
+                professionals experienced in memorial planning, grief support, and 
+                cultural traditions. They guide families through every step—from 
+                casket selection to full funeral coordination—at our beautiful grounds 
+                featuring a Memorial Garden, Indoor Chapel Hall, and Reception Hall.
               </p>
               <p className="mt-4 text-text-muted leading-relaxed">
-                Our beautiful grounds include a serene Memorial Garden, a
-                modern Indoor Chapel Hall, and a spacious Reception Hall,
-                making us a one-stop destination for all memorial needs. Every
-                service we provide is guided by our core values of compassion,
-                integrity, and excellence.
+                <strong>Our Furniture Showroom Team</strong> operates a retail showroom 
+                offering quality home and office furnishings. Our knowledgeable sales 
+                consultants help clients find the perfect pieces for their living and 
+                working spaces.
+              </p>
+              <p className="mt-4 text-text-muted leading-relaxed">
+                Whether honoring a loved one or furnishing a home, our team serves with 
+                <strong> compassion, integrity, and excellence</strong>.
               </p>
             </motion.div>
             <motion.div
@@ -112,7 +115,7 @@ export default function AboutPage() {
                 className="h-80 sm:h-112 rounded-2xl overflow-hidden bg-cover bg-center shadow-xl"
                 style={{
                   backgroundImage:
-                    "url(https://images.pexels.com/photos/7317874/pexels-photo-7317874.jpeg?auto=compress&cs=tinysrgb&w=800)",
+                    "url(/images/logo.png)",
                 }}
               />
               <div className="absolute -bottom-6 -left-6 rounded-xl bg-gold p-6 shadow-lg">
