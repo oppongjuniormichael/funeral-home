@@ -10,7 +10,7 @@ interface AnimatedHeroProps {
 
 export default function AnimatedHero({ image, title, subtitle }: AnimatedHeroProps) {
   return (
-    <section className="relative h-[50vh] min-h-[350px] overflow-hidden">
+    <section className="relative h-[50vh] min-h-87.5 overflow-hidden">
       {/* Background with parallax-like effect */}
       <motion.div
         initial={{ scale: 1.1 }}
@@ -20,7 +20,7 @@ export default function AnimatedHero({ image, title, subtitle }: AnimatedHeroPro
         style={{ backgroundImage: `url(${image})` }}
       />
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-primary/20" />
+      <div className="absolute inset-0 bg-linear-to-t from-primary/80 via-primary/40 to-primary/20" />
       {/* Content */}
       <div className="relative z-10 flex h-full items-end pb-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">

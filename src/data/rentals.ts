@@ -1,12 +1,26 @@
+import type { StaticImageData } from "next/image";
+import blackHearse from "@/assets/black hearse.jpg";
+import blackHearse2 from "@/assets/black hearse 2.jpg";
+import redHearse from "@/assets/red hearse.jpg";
+import richHearse from "@/assets/rich hearse.jpg";
+import canopy from "@/assets/canopy.jpg";
+import canopy2 from "@/assets/canopy 2.jpg";
+import flowerCanopy from "@/assets/flower canopy.jpg";
+import grounds1Img from "@/assets/grounds 1.jpg";
+import casket1 from "@/assets/casket1.jpg";
+import casket2 from "@/assets/casket 2.jpg";
+import metalCasket from "@/assets/Metal casket.jpg";
+import woodenCasket from "@/assets/wooden casket.jpg";
+
 export interface RentalItem {
   id: string;
   code: string;
   name: string;
-  category: "hearses" | "canopies" | "grounds" | "chairs" | "other";
+  category: "hearses" | "canopies" | "grounds" | "chairs" | "other" | "caskets";
   subCategory?: string;
   price: number;
   priceUnit: string;
-  image: string;
+  image: string | StaticImageData;
   description: string;
 }
 
@@ -19,7 +33,7 @@ export const rentals: RentalItem[] = [
     category: "hearses",
     price: 500,
     priceUnit: "per service",
-    image: "https://images.pexels.com/photos/1729993/pexels-photo-1729993.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: blackHearse,
     description: "Traditional black hearse for dignified funeral processions.",
   },
   {
@@ -29,9 +43,21 @@ export const rentals: RentalItem[] = [
     category: "hearses",
     price: 550,
     priceUnit: "per service",
-    image: "https://images.pexels.com/photos/4141962/pexels-photo-4141962.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: redHearse,
     description: "Elegant luxury vehicle for memorial services and processions.",
   },
+
+  {
+    id: "h3",
+    code: "HRS-002",
+    name: "Luxury Funeral Vehicle",
+    category: "hearses",
+    price: 550,
+    priceUnit: "per service",
+    image: richHearse,
+    description: "Elegant luxury vehicle for memorial services and processions.",
+  },
+
   // Canopies
   {
     id: "cn1",
@@ -40,7 +66,7 @@ export const rentals: RentalItem[] = [
     category: "canopies",
     price: 150,
     priceUnit: "per day",
-    image: "https://images.pexels.com/photos/872831/pexels-photo-872831.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: canopy,
     description: "Standard white canopy tent for graveside services, seats 20.",
   },
   {
@@ -50,7 +76,7 @@ export const rentals: RentalItem[] = [
     category: "canopies",
     price: 350,
     priceUnit: "per day",
-    image: "https://images.pexels.com/photos/1268877/pexels-photo-1268877.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: canopy2,
     description: "Large canopy with draped sides, seats 50 guests comfortably.",
   },
   {
@@ -60,7 +86,7 @@ export const rentals: RentalItem[] = [
     category: "canopies",
     price: 800,
     priceUnit: "per day",
-    image: "https://images.pexels.com/photos/111362/pexels-photo-111362.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: flowerCanopy,
     description: "Grand marquee tent for large memorial gatherings and receptions.",
   },
   // Grounds / Venues
@@ -71,7 +97,7 @@ export const rentals: RentalItem[] = [
     category: "grounds",
     price: 1200,
     priceUnit: "per day",
-    image: "https://images.pexels.com/photos/10499692/pexels-photo-10499692.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: grounds1Img,
     description: "Beautiful landscaped garden for outdoor memorial services.",
   },
   {
@@ -81,7 +107,7 @@ export const rentals: RentalItem[] = [
     category: "grounds",
     price: 1500,
     priceUnit: "per day",
-    image: "https://images.pexels.com/photos/6629774/pexels-photo-6629774.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: woodenCasket,
     description: "Elegant indoor chapel with seating for 200 guests.",
   },
   {
@@ -91,7 +117,7 @@ export const rentals: RentalItem[] = [
     category: "grounds",
     price: 1000,
     priceUnit: "per day",
-    image: "https://images.pexels.com/photos/17606660/pexels-photo-17606660.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: grounds1Img,
     description: "Spacious reception hall for after-service gatherings and meals.",
   },
   // Rental Chairs
@@ -103,7 +129,7 @@ export const rentals: RentalItem[] = [
     subCategory: "Chiavari",
     price: 8,
     priceUnit: "per chair/day",
-    image: "https://images.pexels.com/photos/11450795/pexels-photo-11450795.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: casket1,
     description: "Gold chiavari chair rental with cushion included.",
   },
   {
@@ -114,7 +140,7 @@ export const rentals: RentalItem[] = [
     subCategory: "Folding",
     price: 3,
     priceUnit: "per chair/day",
-    image: "https://images.pexels.com/photos/1339295/pexels-photo-1339295.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: casket1,
     description: "White resin folding chair rental for events.",
   },
   {
@@ -125,7 +151,7 @@ export const rentals: RentalItem[] = [
     subCategory: "Banquet",
     price: 6,
     priceUnit: "per chair/day",
-    image: "https://images.pexels.com/photos/50675/pexels-photo-50675.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: casket1,
     description: "Padded banquet chair rental with covers.",
   },
   // Other
@@ -136,7 +162,7 @@ export const rentals: RentalItem[] = [
     category: "other",
     price: 200,
     priceUnit: "per day",
-    image: "https://images.pexels.com/photos/8198136/pexels-photo-8198136.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: flowerCanopy,
     description: "Professional sound system with microphones and speakers.",
   },
   {
@@ -146,7 +172,7 @@ export const rentals: RentalItem[] = [
     category: "other",
     price: 300,
     priceUnit: "per set",
-    image: "https://images.pexels.com/photos/886616/pexels-photo-886616.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: casket1,
     description: "Complete floral arrangement set for memorial services.",
   },
   {
@@ -156,7 +182,38 @@ export const rentals: RentalItem[] = [
     category: "other",
     price: 75,
     priceUnit: "per day",
-    image: "https://images.pexels.com/photos/8963947/pexels-photo-8963947.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: casket2,
     description: "Large standing photo display board for tributes.",
+  },
+  // Caskets (local assets)
+  {
+    id: "cs1",
+    code: "CSK-101",
+    name: "Royal Oak Casket",
+    category: "caskets",
+    price: 2500,
+    priceUnit: "each",
+    image: casket1,
+    description: "Premium solid oak casket with satin interior lining and brass hardware.",
+  },
+  {
+    id: "cs2",
+    code: "CSK-102",
+    name: "Mahogany Casket",
+    category: "caskets",
+    price: 3200,
+    priceUnit: "each",
+    image: woodenCasket,
+    description: "Hand-finished mahogany casket with velvet interior and classic hardware.",
+  },
+  {
+    id: "cs3",
+    code: "CSK-103",
+    name: "Metal Heritage Casket",
+    category: "caskets",
+    price: 4500,
+    priceUnit: "each",
+    image: metalCasket,
+    description: "Durable metal casket with polished finish and comfortable interior.",
   },
 ];

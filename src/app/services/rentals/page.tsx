@@ -7,7 +7,7 @@ import CategoryFilter from "@/components/CategoryFilter";
 import ProductCard from "@/components/ProductCard";
 import { rentals } from "@/data/rentals";
 
-const categories = ["All", "Hearses", "Canopies", "Grounds", "Chairs", "Other"];
+const categories = ["All", "Hearses", "Canopies", "Grounds", "Chairs", "Caskets"];
 
 export default function RentalsPage() {
   const [active, setActive] = useState("All");
@@ -15,9 +15,9 @@ export default function RentalsPage() {
   const filtered =
     active === "All"
       ? rentals
-      : rentals.filter(
-          (r) => r.category === active.toLowerCase()
-        );
+      : active === "Chairs"
+      ? [] // Chairs button present but fetching disabled for now
+      : rentals.filter((r) => r.category === active.toLowerCase());
 
   return (
     <>

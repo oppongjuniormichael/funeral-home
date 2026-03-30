@@ -109,7 +109,7 @@ export default function AboutPage() {
               className="relative"
             >
               <div
-                className="h-80 sm:h-[28rem] rounded-2xl overflow-hidden bg-cover bg-center shadow-xl"
+                className="h-80 sm:h-112 rounded-2xl overflow-hidden bg-cover bg-center shadow-xl"
                 style={{
                   backgroundImage:
                     "url(https://images.pexels.com/photos/7317874/pexels-photo-7317874.jpeg?auto=compress&cs=tinysrgb&w=800)",

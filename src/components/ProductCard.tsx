@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Eye, Mail, Minus, Plus } from "lucide-react";
+import type { StaticImageData } from "next/image";
 import { buildMailtoLink, formatPrice, ADMIN_EMAIL } from "@/lib/utils";
 import ImageLightbox from "./ImageLightbox";
 
@@ -12,7 +13,7 @@ interface ProductCardProps {
   name: string;
   price: number;
   priceUnit?: string;
-  image: string;
+  image: string | StaticImageData;
   description: string;
   subCategory?: string;
   type: "booking" | "rental";
@@ -49,7 +50,7 @@ export default function ProductCard({
         className="group rounded-2xl border border-accent/40 bg-surface overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
       >
         {/* Image */}
-        <div className="relative aspect-[4/3] overflow-hidden cursor-pointer" onClick={() => setLightboxOpen(true)}>
+        <div className="relative aspect-4/3 overflow-hidden cursor-pointer" onClick={() => setLightboxOpen(true)}>
           <Image
             src={image}
             alt={name}
@@ -104,7 +105,7 @@ export default function ProductCard({
               >
                 <Minus size={14} />
               </button>
-              <span className="min-w-[2rem] text-center text-sm font-medium">
+              <span className="min-w-8 text-center text-sm font-medium">
                 {quantity}
               </span>
               <button

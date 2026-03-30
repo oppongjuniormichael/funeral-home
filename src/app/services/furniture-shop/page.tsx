@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -5,26 +6,31 @@ import { motion } from "framer-motion";
 import AnimatedHero from "@/components/AnimatedHero";
 import CategoryFilter from "@/components/CategoryFilter";
 import ProductCard from "@/components/ProductCard";
-import { products } from "@/data/products";
+import sofaHero from "@/assets/sofa chairs.jpg";
+import { furniture } from "@/data/furniture";
 
-const categories = ["All", "Caskets", "Chairs", "Furniture"];
+const categories = ["All", "Tables", "Sofa", "Living Room"];
 
 export default function FurnitureShopPage() {
   const [active, setActive] = useState("All");
 
   const filtered =
     active === "All"
-      ? products
-      : products.filter(
-          (p) => p.category === active.toLowerCase().replace("furniture", "furniture")
-        );
+      ? furniture
+      : active === "Tables"
+      ? furniture.filter((f) => f.category === "tables")
+      : active === "Sofa"
+      ? furniture.filter((f) => f.category === "sofas")
+      : active === "Living Room"
+      ? furniture.filter((f) => f.category === "living")
+      : [];
 
   return (
     <>
       <AnimatedHero
-        image="https://images.pexels.com/photos/7317943/pexels-photo-7317943.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        image={encodeURI(sofaHero.src)}
         title="Furniture Shop"
-        subtitle="Premium caskets, chairs, and memorial furniture — each piece selected with care"
+        subtitle="Premium caskets, sofas, and memorial furniture — each piece selected with care"
       />
 
       <section className="py-16">
