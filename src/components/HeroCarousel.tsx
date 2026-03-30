@@ -7,39 +7,42 @@ import Link from "next/link";
 
 const slides = [
   {
-    image:
-      "https://images.pexels.com/photos/7317874/pexels-photo-7317874.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    title: "Honoring Lives with Dignity",
+    image: "/images/company.png",
+    title: "Donkor & Sons — A Legacy of Compassion",
     subtitle:
-      "Donkor And Sons — compassionate funeral services for your loved ones",
-    cta: { label: "Our Services", href: "/services/furniture-shop" },
+      "Providing exceptional and respectful services with years of experience and dedication.",
+    cta: { label: "About Us", href: "/about" },
   },
   {
-    image:
-      "https://images.pexels.com/photos/10485372/pexels-photo-10485372.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    title: "Premium Caskets & Furniture",
+    image: "/images/casket.jpg",
+    title: "Premium Caskets",
     subtitle:
-      "Browse our collection of finely crafted caskets, chairs, and memorial furniture",
+      "A wide selection of finely crafted caskets for a dignified farewell",
+    cta: { label: "View Caskets", href: "/services/furniture-shop" },
+  },
+  {
+    image: "/images/sofa3.jpg",
+    title: "Premium Furniture",
+    subtitle:
+      "High-quality chairs, sofas, and memorial furniture for your comfort",
     cta: { label: "Shop Furniture", href: "/services/furniture-shop" },
   },
   {
-    image:
-      "https://images.pexels.com/photos/1729993/pexels-photo-1729993.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    image: "/images/hess.png",
     title: "Hearse & Transport Services",
     subtitle:
       "Dignified transportation for your loved ones with our fleet of vehicles",
     cta: { label: "View Rentals", href: "/services/rentals" },
   },
   {
-    image:
-      "https://images.pexels.com/photos/872831/pexels-photo-872831.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    image: "/images/event3.jpg",
     title: "Canopies & Event Rentals",
     subtitle:
       "Beautiful canopies, tents, and seating for memorial services and gatherings",
     cta: { label: "View Rentals", href: "/services/rentals" },
   },
   {
-    image: "/serene.png",
+    image: "/images/event2.jpg",
     title: "Serene Venues & Chapel",
     subtitle:
       "Peaceful indoor and outdoor spaces for dignified farewell ceremonies",
