@@ -10,7 +10,7 @@ const quickLinks = [
 
 const serviceLinks = [
   { label: "Furniture Shop", href: "/services/furniture-shop" },
-  { label: "Rental Shop", href: "/services/rentals" },
+  { label: "Funeral Shop", href: "/services/rentals" },
 ];
 
 export default function Footer() {

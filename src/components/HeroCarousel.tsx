@@ -18,7 +18,7 @@ const slides = [
     title: "Premium Caskets",
     subtitle:
       "A wide selection of finely crafted caskets for a dignified farewell",
-    cta: { label: "View Caskets", href: "/services/furniture-shop" },
+    cta: { label: "View Caskets", href: "/services/rentals?category=caskets" },
   },
   {
     image: "/images/sofa3.jpg",

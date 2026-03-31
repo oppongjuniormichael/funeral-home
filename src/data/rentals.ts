@@ -11,6 +11,10 @@ import casket1 from "@/assets/casket1.jpg";
 import casket2 from "@/assets/casket 2.jpg";
 import metalCasket from "@/assets/Metal casket.jpg";
 import woodenCasket from "@/assets/wooden casket.jpg";
+import chair111 from "@/assets/funeral-chair111.jpg";
+import chair222 from "@/assets/funeral-chair222.jpg";
+import chair333 from "@/assets/funeral-chair333.jpg";
+import chair444 from "@/assets/funeral-chair444.jpg";
 
 export interface RentalItem {
   id: string;
@@ -120,39 +124,50 @@ export const rentals: RentalItem[] = [
     image: grounds1Img,
     description: "Spacious reception hall for after-service gatherings and meals.",
   },
-  // Rental Chairs
+  // Rental Chairs (funeral chair assets mapped to chair codes 111-444)
   {
-    id: "rc1",
-    code: "RCH-A01",
-    name: "Gold Chiavari Chair (Rental)",
+    id: "ch111",
+    code: "111",
+    name: "Funeral Chair Model 111",
     category: "chairs",
-    subCategory: "Chiavari",
-    price: 8,
+    subCategory: "Funeral",
+    price: 5,
     priceUnit: "per chair/day",
-    image: casket1,
-    description: "Gold chiavari chair rental with cushion included.",
+    image: chair111,
+    description: "Comfortable funeral chair model 111 — durable and dignified.",
   },
   {
-    id: "rc2",
-    code: "RCH-B01",
-    name: "White Folding Chair (Rental)",
+    id: "ch222",
+    code: "222",
+    name: "Funeral Chair Model 222",
     category: "chairs",
-    subCategory: "Folding",
-    price: 3,
-    priceUnit: "per chair/day",
-    image: casket1,
-    description: "White resin folding chair rental for events.",
-  },
-  {
-    id: "rc3",
-    code: "RCH-C01",
-    name: "Banquet Chair (Rental)",
-    category: "chairs",
-    subCategory: "Banquet",
+    subCategory: "Funeral",
     price: 6,
     priceUnit: "per chair/day",
-    image: casket1,
-    description: "Padded banquet chair rental with covers.",
+    image: chair222,
+    description: "Elegant funeral chair model 222 with padded seating.",
+  },
+  {
+    id: "ch333",
+    code: "333",
+    name: "Funeral Chair Model 333",
+    category: "chairs",
+    subCategory: "Funeral",
+    price: 7,
+    priceUnit: "per chair/day",
+    image: chair333,
+    description: "Sturdy banquet-style funeral chair model 333.",
+  },
+  {
+    id: "ch444",
+    code: "444",
+    name: "Funeral Chair Model 444",
+    category: "chairs",
+    subCategory: "Funeral",
+    price: 8,
+    priceUnit: "per chair/day",
+    image: chair444,
+    description: "Premium funeral chair model 444 with decorative finish.",
   },
   // Other
   {

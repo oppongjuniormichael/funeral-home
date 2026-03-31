@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ShoppingCart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRequest } from "@/context/RequestContext";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -14,7 +15,7 @@ const navLinks = [
     href: "#",
     dropdown: [
       { label: "Furniture Shop", href: "/services/furniture-shop" },
-      { label: "Rental Shop", href: "/services/rentals" },
+      { label: "Funeral Shop", href: "/services/rentals" },
     ],
   },
   { label: "FAQ", href: "/faq" },
@@ -26,6 +27,7 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const { openDrawer, items } = useRequest();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -125,12 +127,24 @@ export default function Navbar() {
                 </Link>
               )
             )}
-            <Link
-              href="/contact"
-              className="ml-4 rounded-lg bg-gold px-5 py-2.5 text-sm font-semibold text-primary transition-all hover:bg-gold/90 hover:shadow-lg"
-            >
-              Get in Touch
-            </Link>
+            {items.length > 0 && (
+              <button
+                onClick={() => {
+                  try {
+                    openDrawer();
+                  } catch (e) {
+                    window.location.href = "/contact";
+                  }
+                }}
+                aria-label="Open cart"
+                className="ml-4 rounded-lg bg-gold px-4 py-2.5 text-sm font-semibold text-primary transition-all hover:bg-gold/90 hover:shadow-lg relative"
+              >
+                <ShoppingCart size={18} />
+                <span className="absolute -top-2 -right-2 bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold">
+                  {items.length}
+                </span>
+              </button>
+            )}
           </div>
 
           {/* Mobile toggle */}
@@ -207,12 +221,24 @@ export default function Navbar() {
                   </Link>
                 )
               )}
-              <Link
-                href="/contact"
-                className="block mt-3 text-center rounded-lg bg-gold px-5 py-3 text-sm font-semibold text-primary"
-              >
-                Get in Touch
-              </Link>
+              {items.length > 0 && (
+                <button
+                  onClick={() => {
+                    try {
+                      openDrawer();
+                      setMobileOpen(false);
+                    } catch (e) {
+                      window.location.href = "/contact";
+                    }
+                  }}
+                  className="block mt-3 text-center rounded-lg bg-gold px-5 py-3 text-sm font-semibold text-primary flex items-center justify-center gap-2"
+                >
+                  <ShoppingCart size={16} />
+                  <span className="inline-flex items-center justify-center bg-primary text-white rounded-full w-5 h-5 text-xs font-semibold">
+                    {items.length}
+                  </span>
+                </button>
+              )}
             </div>
           </motion.div>
         )}

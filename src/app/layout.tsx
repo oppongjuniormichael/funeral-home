@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import RequestProvider from "@/context/RequestContext";
+import RequestDrawer from "@/components/RequestDrawer";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -30,9 +32,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="min-h-screen flex flex-col">
-        <Navbar />
-        <main className="flex-1 pt-20">{children}</main>
-        <Footer />
+        <RequestProvider>
+          <Navbar />
+          <main className="flex-1 pt-20">{children}</main>
+          <RequestDrawer />
+          <Footer />
+        </RequestProvider>
       </body>
     </html>
   );
