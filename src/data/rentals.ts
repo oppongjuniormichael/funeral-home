@@ -15,12 +15,22 @@ import chair111 from "@/assets/funeral-chair111.jpg";
 import chair222 from "@/assets/funeral-chair222.jpg";
 import chair333 from "@/assets/funeral-chair333.jpg";
 import chair444 from "@/assets/funeral-chair444.jpg";
+import casketLower1 from "@/assets/casket-lowering-device1.jpg";
+import casketLower2 from "@/assets/casket-lowering-device2.jpg";
+import casketLower3 from "@/assets/casket-lowering-device3.jpg";
 
 export interface RentalItem {
   id: string;
   code: string;
   name: string;
-  category: "hearses" | "canopies" | "grounds" | "chairs" | "other" | "caskets";
+  category:
+    | "hearses"
+    | "canopies"
+    | "grounds"
+    | "chairs"
+    | "other"
+    | "caskets"
+    | "lowering devices";
   subCategory?: string;
   price: number;
   priceUnit: string;
@@ -168,6 +178,40 @@ export const rentals: RentalItem[] = [
     priceUnit: "per chair/day",
     image: chair444,
     description: "Premium funeral chair model 444 with decorative finish.",
+  },
+  // Casket lowering devices
+  {
+    id: "ld1",
+    code: "LDV-001",
+    name: "Casket Lowering Device 1",
+    category: "lowering devices",
+    subCategory: "Lowering Device",
+    price: 0,
+    priceUnit: "",
+    image: casketLower1,
+    description: "Manual casket lowering device — compact and reliable.",
+  },
+  {
+    id: "ld2",
+    code: "LDV-002",
+    name: "Casket Lowering Device 2",
+    category: "lowering devices",
+    subCategory: "Lowering Device",
+    price: 0,
+    priceUnit: "",
+    image: casketLower2,
+    description: "Hydraulic lowering device for smooth and controlled descent.",
+  },
+  {
+    id: "ld3",
+    code: "LDV-003",
+    name: "Casket Lowering Device 3",
+    category: "lowering devices",
+    subCategory: "Lowering Device",
+    price: 0,
+    priceUnit: "",
+    image: casketLower3,
+    description: "Heavy-duty lowering equipment for larger caskets.",
   },
   // Other
   {

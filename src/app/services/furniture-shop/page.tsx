@@ -69,6 +69,8 @@ export default function FurnitureShopPage() {
                 description={product.description}
                 subCategory={product.subCategory}
                 type="booking"
+                hideTitle={true}
+                hidePrice={true}
               />
             ))}
           </div>

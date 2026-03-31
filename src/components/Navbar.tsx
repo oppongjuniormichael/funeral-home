@@ -15,7 +15,7 @@ const navLinks = [
     href: "#",
     dropdown: [
       { label: "Furniture Shop", href: "/services/furniture-shop" },
-      { label: "Funeral Shop", href: "/services/rentals" },
+      { label: "Funeral Services", href: "/services/rentals" },
     ],
   },
   { label: "FAQ", href: "/faq" },
@@ -194,7 +194,7 @@ export default function Navbar() {
                             <Link
                               key={sub.href}
                               href={sub.href}
-                              className={`block px-4 py-2.5 rounded-lg text-sm ${
+                              className={`px-4 py-2.5 rounded-lg text-sm ${
                                 pathname === sub.href
                                   ? "text-gold"
                                   : "text-white/60 hover:text-white"
@@ -231,7 +231,7 @@ export default function Navbar() {
                       window.location.href = "/contact";
                     }
                   }}
-                  className="block mt-3 text-center rounded-lg bg-gold px-5 py-3 text-sm font-semibold text-primary flex items-center justify-center gap-2"
+                  className="mt-3 text-center rounded-lg bg-gold px-5 py-3 text-sm font-semibold text-primary flex items-center justify-center gap-2"
                 >
                   <ShoppingCart size={16} />
                   <span className="inline-flex items-center justify-center bg-primary text-white rounded-full w-5 h-5 text-xs font-semibold">

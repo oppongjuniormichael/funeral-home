@@ -8,7 +8,7 @@ import CategoryFilter from "@/components/CategoryFilter";
 import ProductCard from "@/components/ProductCard";
 import { rentals } from "@/data/rentals";
 
-const categories = ["All", "Hearses", "Canopies", "Grounds", "Chairs", "Caskets"];
+const categories = ["All", "Hearses", "Canopies", "Grounds", "Chairs", "Caskets", "Lowering Devices"];
 
 export default function RentalsPage() {
   const searchParams = useSearchParams();
@@ -30,7 +30,7 @@ export default function RentalsPage() {
     <>
       <AnimatedHero
         image="https://images.pexels.com/photos/872831/pexels-photo-872831.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        title="Funeral Shop"
+        title="Funeral Services"
         subtitle="Hearses, canopies, venues, chairs, and event equipment — available for rent"
       />
 
@@ -71,6 +71,8 @@ export default function RentalsPage() {
                 description={item.description}
                 subCategory={item.subCategory}
                 type="rental"
+                hidePrice={true}
+                hideTitle={true}
               />
             ))}
           </div>

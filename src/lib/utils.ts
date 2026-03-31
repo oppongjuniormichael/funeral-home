@@ -50,18 +50,10 @@ export function buildBulkMailtoLink({
   if (user.whatsapp) body += `WhatsApp: ${user.whatsapp}%0D%0A`;
 
   body += `%0D%0AItems:%0D%0A`;
-  let total = 0;
   items.forEach((it, idx) => {
     const line = `${idx + 1}. ${it.name} (${it.code}) — Qty: ${it.quantity}`;
-    if (typeof it.price === "number") {
-      total += it.price * it.quantity;
-      body += `${line} — Price: ${formatPrice(it.price)}%0D%0A`;
-    } else {
-      body += `${line}%0D%0A`;
-    }
+    body += `${line}%0D%0A`;
   });
-
-  if (total > 0) body += `%0D%0ATotal (est): ${formatPrice(total)}%0D%0A`;
 
   if (user.message) body += `%0D%0AMessage:%0D%0A${encodeURIComponent(user.message)}%0D%0A`;
 

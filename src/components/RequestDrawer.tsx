@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { X, Trash, Plus, Minus } from "lucide-react";
 import { useRequest } from "@/context/RequestContext";
-import { buildBulkMailtoLink, ADMIN_EMAIL, formatPrice } from "@/lib/utils";
+import { buildBulkMailtoLink, ADMIN_EMAIL } from "@/lib/utils";
 
 export default function RequestDrawer() {
   const { items, updateQuantity, removeItem, clear, drawerOpen, openDrawer, closeDrawer } = useRequest();
@@ -16,7 +16,7 @@ export default function RequestDrawer() {
   const [whatsapp, setWhatsapp] = useState("");
   const [message, setMessage] = useState("");
 
-  const total = items.reduce((s, i) => s + i.price * i.quantity, 0);
+  // Prices are intentionally not displayed; totals are not calculated
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -98,7 +98,7 @@ export default function RequestDrawer() {
                           >
                             <Minus size={14} />
                           </button>
-                          <span className="min-w-[30px] text-center">{it.quantity}</span>
+                          <span className="min-w-7.5 text-center">{it.quantity}</span>
                           <button
                             onClick={() => updateQuantity(it.code, it.quantity + 1)}
                             className="p-1 rounded bg-accent/20"
@@ -140,15 +140,9 @@ export default function RequestDrawer() {
                   <textarea value={message} onChange={(e) => setMessage(e.target.value)} className="w-full rounded border px-3 py-2" rows={3} />
                 </div>
 
-                <div className="flex items-center justify-between mt-4">
-                  <div>
-                    <div className="text-sm text-text-muted">Estimated total</div>
-                    <div className="font-semibold text-lg">{formatPrice(total)}</div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <button type="button" onClick={() => { clear(); }} className="px-4 py-2 rounded border text-sm">Clear</button>
-                    <button type="submit" className="px-4 py-2 rounded bg-gold text-primary font-semibold">Send Request</button>
-                  </div>
+                <div className="flex items-center justify-end gap-2 mt-4">
+                  <button type="button" onClick={() => { clear(); }} className="px-4 py-2 rounded border text-sm">Clear</button>
+                  <button type="submit" className="px-4 py-2 rounded bg-gold text-primary font-semibold">Send Request</button>
                 </div>
               </form>
             </div>

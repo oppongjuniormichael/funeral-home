@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Eye, Minus, Plus } from "lucide-react";
 import type { StaticImageData } from "next/image";
-import { formatPrice } from "@/lib/utils";
 import { useRequest } from "@/context/RequestContext";
 import ImageLightbox from "./ImageLightbox";
 
@@ -18,6 +17,9 @@ interface ProductCardProps {
   description: string;
   subCategory?: string;
   type: "booking" | "rental";
+  hideTitleAndPrice?: boolean;
+  hidePrice?: boolean;
+  hideTitle?: boolean;
 }
 
 export default function ProductCard({
@@ -29,6 +31,9 @@ export default function ProductCard({
   description,
   subCategory,
   type,
+  hideTitleAndPrice = false,
+  hidePrice = false,
+  hideTitle = false,
 }: ProductCardProps) {
   const [quantity, setQuantity] = useState(1);
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -83,7 +88,7 @@ export default function ProductCard({
               <Eye size={20} className="text-primary" />
             </div>
           </div>
-          {subCategory && (
+          {subCategory && !(hideTitle || hideTitleAndPrice) && (
             <span className="absolute top-3 left-3 rounded-full bg-primary/80 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
               {subCategory}
             </span>
@@ -94,24 +99,30 @@ export default function ProductCard({
         <div className="p-5">
           <div className="flex items-start justify-between gap-2">
             <div>
-              <h3 className="font-heading text-lg font-semibold text-primary leading-snug">
-                {name}
-              </h3>
-              <span className="mt-1 inline-block rounded bg-accent/40 px-2 py-0.5 text-xs font-mono text-text-muted">
-                {code}
-              </span>
-            </div>
-            <div className="text-right shrink-0">
-              <span className="text-xl font-bold text-gold">
-                {formatPrice(price)}
-              </span>
-              {priceUnit && (
-                <span className="block text-xs text-text-muted">{priceUnit}</span>
+              {!(hideTitle || hideTitleAndPrice) ? (
+                <>
+                  <h3 className="font-heading text-lg font-semibold text-primary leading-snug">
+                    {name}
+                  </h3>
+                  <span className="mt-1 inline-block rounded bg-accent/40 px-2 py-0.5 text-xs font-mono text-text-muted">
+                    {code}
+                  </span>
+                </>
+              ) : (
+                // Titles hidden: show only the product code
+                <>
+                  <span className="mt-1 inline-block rounded bg-accent/40 px-2 py-0.5 text-xs font-mono text-text-muted">
+                    {code}
+                  </span>
+                </>
               )}
+
             </div>
+
+            {/* Prices are intentionally hidden across the UI */}
           </div>
 
-          <p className="mt-3 text-sm text-text-muted leading-relaxed line-clamp-2">
+          <p className={hideTitleAndPrice ? "mt-3 text-sm text-text-muted leading-relaxed" : "mt-3 text-sm text-text-muted leading-relaxed line-clamp-2"}>
             {description}
           </p>
 

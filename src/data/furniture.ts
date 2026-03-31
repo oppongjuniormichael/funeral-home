@@ -101,16 +101,7 @@ export const furniture: FurnitureItem[] = [
     description: "Classic gold chiavari chair with cushion pad.",
   },
 
-  {
-    id: "c3",
-    code: "CH-003",
-    name: "Office-style Chair",
-    category: "sofas",
-    subCategory: "Office",
-    price: 20,
-    image: officeChairs,
-    description: "Comfortable office-style chair for indoor receptions.",
-  },
+
 
   {
     id: "c2",
