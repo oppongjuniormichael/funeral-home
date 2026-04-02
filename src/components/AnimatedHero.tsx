@@ -10,7 +10,7 @@ interface AnimatedHeroProps {
 
 export default function AnimatedHero({ image, title, subtitle }: AnimatedHeroProps) {
   return (
-    <section className="relative h-[50vh] min-h-87.5 overflow-hidden">
+    <section className="relative h-[50vh] min-h-[350px] overflow-hidden">
       {/* Background with parallax-like effect */}
       <motion.div
         initial={{ scale: 1.1 }}

@@ -1,6 +1,5 @@
 import type { StaticImageData } from "next/image";
 import blackHearse from "@/assets/black hearse.jpg";
-import blackHearse2 from "@/assets/black hearse 2.jpg";
 import redHearse from "@/assets/red hearse.jpg";
 import richHearse from "@/assets/rich hearse.jpg";
 import canopy from "@/assets/canopy.jpg";
@@ -63,7 +62,7 @@ export const rentals: RentalItem[] = [
 
   {
     id: "h3",
-    code: "HRS-002",
+    code: "HRS-003",
     name: "Luxury Funeral Vehicle",
     category: "hearses",
     price: 550,

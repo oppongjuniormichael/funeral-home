@@ -1,11 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import type { StaticImageData } from "next/image";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { X, Trash, Plus, Minus } from "lucide-react";
+import { X, Trash, Plus, Minus, Loader } from "lucide-react";
 import { useRequest } from "@/context/RequestContext";
-import { buildBulkMailtoLink, ADMIN_EMAIL } from "@/lib/utils";
+import { sendBookingEmail, initEmailJS } from "@/lib/emailjs";
+import { sendBookingNotificationSms } from "@/lib/hubtel";
+import { showToast } from "@/lib/toast";
 
 export default function RequestDrawer() {
   const { items, updateQuantity, removeItem, clear, drawerOpen, openDrawer, closeDrawer } = useRequest();
@@ -15,25 +18,61 @@ export default function RequestDrawer() {
   const [mobile, setMobile] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Prices are intentionally not displayed; totals are not calculated
+  useEffect(() => {
+    initEmailJS();
+  }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
     if (items.length === 0) {
-      alert("No items selected.");
+      showToast("error", "No items selected.");
       return;
     }
-    const mailto = buildBulkMailtoLink({
-      to: ADMIN_EMAIL,
-      items,
-      user: { name, email, mobile, whatsapp, message },
-    });
-    // Open mail client
-    window.location.href = mailto;
-    // optional cleanup
-    clear();
-    closeDrawer();
+
+    setIsSubmitting(true);
+
+    try {
+      await sendBookingEmail({
+        name,
+        email,
+        mobile,
+        whatsapp,
+        message,
+        items,
+      });
+
+      // Try to send SMS, but don't fail if it doesn't work
+      const adminPhone = process.env.NEXT_PUBLIC_ADMIN_PHONE;
+      if (adminPhone) {
+        try {
+          await sendBookingNotificationSms(name, items.length, adminPhone);
+        } catch (smsError) {
+          console.warn("SMS sending failed (non-blocking):", smsError);
+          // Don't throw - just continue
+        }
+      }
+
+      showToast("success", "Booking submitted successfully! Check your email for confirmation.");
+
+      setName("");
+      setEmail("");
+      setMobile("");
+      setWhatsapp("");
+      setMessage("");
+      clear();
+      
+      setTimeout(() => {
+        closeDrawer();
+      }, 1500);
+    } catch (error) {
+      console.error("Submission error:", error);
+      showToast("error", "Failed to submit booking. Please try again or contact support.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -81,7 +120,7 @@ export default function RequestDrawer() {
                       <li key={it.code} className="flex items-center gap-3">
                         {it.image ? (
                           <div className="w-16 h-12 relative rounded overflow-hidden">
-                            <Image src={it.image as any} alt={it.name} fill className="object-cover" />
+                            <Image src={it.image as StaticImageData} alt={it.name} fill className="object-cover" />
                           </div>
                         ) : (
                           <div className="w-16 h-12 bg-accent/20 rounded" />
@@ -98,7 +137,7 @@ export default function RequestDrawer() {
                           >
                             <Minus size={14} />
                           </button>
-                          <span className="min-w-7.5 text-center">{it.quantity}</span>
+                          <span className="min-w-8 text-center">{it.quantity}</span>
                           <button
                             onClick={() => updateQuantity(it.code, it.quantity + 1)}
                             className="p-1 rounded bg-accent/20"
@@ -141,8 +180,11 @@ export default function RequestDrawer() {
                 </div>
 
                 <div className="flex items-center justify-end gap-2 mt-4">
-                  <button type="button" onClick={() => { clear(); }} className="px-4 py-2 rounded border text-sm">Clear</button>
-                  <button type="submit" className="px-4 py-2 rounded bg-gold text-primary font-semibold">Send Request</button>
+                  <button type="button" onClick={() => { clear(); }} className="px-4 py-2 rounded border text-sm" disabled={isSubmitting}>Clear</button>
+                  <button type="submit" disabled={isSubmitting} className="flex items-center gap-2 px-4 py-2 rounded bg-gold text-primary font-semibold hover:bg-gold/90 transition-all disabled:opacity-50">
+                    {isSubmitting && <Loader size={16} className="animate-spin" />}
+                    {isSubmitting ? "Submitting..." : "Send Request"}
+                  </button>
                 </div>
               </form>
             </div>

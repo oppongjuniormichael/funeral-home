@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-import { Send } from "lucide-react";
-import { ADMIN_EMAIL } from "@/lib/utils";
+import { useState, type FormEvent, useEffect } from "react";
+import { Loader } from "lucide-react";
+import { sendSmsViaHubtel } from "@/lib/hubtel";
+import { showToast } from "@/lib/toast";
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -13,13 +14,38 @@ export default function ContactForm() {
     message: "",
   });
 
-  const handleSubmit = (e: FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(form.subject || "Website Inquiry");
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\n\n${form.message}`
-    );
-    window.location.href = `mailto:${ADMIN_EMAIL}?subject=${subject}&body=${body}`;
+    setIsSubmitting(true);
+
+    try {
+      const adminPhone = process.env.NEXT_PUBLIC_ADMIN_PHONE || "";
+
+      // Send SMS only to admin (no emails)
+      if (adminPhone) {
+        const smsMessage = `New Contact: ${form.name} (${form.email}, ${form.phone}) - ${form.subject}. Message: ${form.message}`;
+        await sendSmsViaHubtel(adminPhone, smsMessage);
+      } else {
+        throw new Error("Admin phone not configured");
+      }
+
+      showToast("success", "Message sent successfully! We'll get back to you soon.");
+
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Submission error:", error);
+      showToast("error", "Failed to send message. Please try again or call us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClass =
@@ -37,6 +63,7 @@ export default function ContactForm() {
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
             className={inputClass}
+            disabled={isSubmitting}
           />
         </div>
         <div>
@@ -48,6 +75,7 @@ export default function ContactForm() {
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
             className={inputClass}
+            disabled={isSubmitting}
           />
         </div>
       </div>
@@ -60,6 +88,7 @@ export default function ContactForm() {
             value={form.phone}
             onChange={(e) => setForm({ ...form, phone: e.target.value })}
             className={inputClass}
+            disabled={isSubmitting}
           />
         </div>
         <div>
@@ -71,6 +100,7 @@ export default function ContactForm() {
             value={form.subject}
             onChange={(e) => setForm({ ...form, subject: e.target.value })}
             className={inputClass}
+            disabled={isSubmitting}
           />
         </div>
       </div>
@@ -83,14 +113,17 @@ export default function ContactForm() {
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
           className={inputClass + " resize-none"}
+          disabled={isSubmitting}
         />
       </div>
+
       <button
         type="submit"
-        className="flex items-center gap-2 rounded-xl bg-gold px-8 py-3.5 text-sm font-semibold text-primary hover:bg-gold/90 hover:shadow-lg transition-all"
+        disabled={isSubmitting}
+        className="flex items-center gap-2 rounded-xl bg-gold px-8 py-3.5 text-sm font-semibold text-primary hover:bg-gold/90 hover:shadow-lg transition-all disabled:opacity-50"
       >
-        <Send size={16} />
-        Send Message
+        {isSubmitting && <Loader size={16} className="animate-spin" />}
+        {isSubmitting ? "Sending..." : "Send Message"}
       </button>
     </form>
   );

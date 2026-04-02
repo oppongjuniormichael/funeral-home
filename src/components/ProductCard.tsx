@@ -52,8 +52,7 @@ export default function ProductCard({
       // if item removed from request, reset local quantity to 1
       setQuantity(1);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [items, code]);
+  }, [items, code, quantity]);
 
   const handleAddToRequest = () => {
     const exists = items.find((i) => i.code === code);
