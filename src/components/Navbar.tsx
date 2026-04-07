@@ -6,10 +6,12 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, ShoppingCart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRequest } from "@/context/RequestContext";
+// Use the public image path instead of importing a missing asset
 
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
+  { label: "Gallery", href: "/gallery" },
   {
     label: "Services",
     href: "#",

@@ -41,13 +41,6 @@ const slides = [
       "Beautiful canopies, tents, and seating for memorial services and gatherings",
     cta: { label: "View Rentals", href: "/services/rentals" },
   },
-  {
-    image: "/images/event2.jpg",
-    title: "Serene Venues & Chapel",
-    subtitle:
-      "Peaceful indoor and outdoor spaces for dignified farewell ceremonies",
-    cta: { label: "Contact Us", href: "/contact" },
-  },
 ];
 
 export default function HeroCarousel() {

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Heart, Shield, Users, Award } from "lucide-react";
 import AnimatedHero from "@/components/AnimatedHero";
 import StatsCounter from "@/components/StatsCounter";
+// Use public logo image instead of missing asset
 
 const values = [
   {
@@ -114,8 +115,7 @@ export default function AboutPage() {
               <div
                 className="h-80 sm:h-112.5 rounded-2xl overflow-hidden bg-cover bg-center shadow-xl"
                 style={{
-                  backgroundImage:
-                    "url(/images/logo.png)",
+                  backgroundImage: `url('/images/logo.png')`,
                 }}
               />
               <div className="absolute -bottom-6 -left-6 rounded-xl bg-gold p-6 shadow-lg">
