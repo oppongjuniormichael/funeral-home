@@ -51,7 +51,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <img
-              src="/images/logo.png"
+              src="/images/nds.png"
               alt="Donkor And Sons Logo"
               className="w-10 h-10 rounded-full object-cover"
             />

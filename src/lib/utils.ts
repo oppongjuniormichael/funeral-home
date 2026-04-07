@@ -1,32 +1,25 @@
-export function buildMailtoLink({
-  to,
-  itemCode,
-  itemName,
-  quantity,
-  type,
-}: {
+export const ADMIN_EMAIL = "info@donkorandsons.com";
+
+interface MailtoOptions {
   to: string;
-  itemCode: string;
-  itemName: string;
-  quantity: number;
-  type: "booking" | "rental";
-}) {
-  const subject = encodeURIComponent(
-    `${type === "booking" ? "Booking" : "Rental"} Request — ${itemCode} — ${itemName}`
-  );
-  const body = encodeURIComponent(
-    `Hello,\n\nI would like to ${type === "booking" ? "book" : "rent"} the following item:\n\n` +
-      `Item: ${itemName}\nCode: ${itemCode}\nQuantity: ${quantity}\n\n` +
-      `Please confirm availability and next steps.\n\nThank you.`
-  );
-  return `mailto:${to}?subject=${subject}&body=${body}`;
+  subject?: string;
+  body?: string;
+}
+
+export function buildMailtoLink({ to, subject = "", body = "" }: MailtoOptions): string {
+  const params = new URLSearchParams();
+  if (subject) params.set("subject", subject);
+  if (body) params.set("body", body);
+  
+  const queryString = params.toString();
+  return `mailto:${to}${queryString ? `?${queryString}` : ""}`;
 }
 
 export function formatPrice(price: number): string {
-  return new Intl.NumberFormat("en-US", {
+  return new Intl.NumberFormat("en-GH", {
     style: "currency",
-    currency: "USD",
+    currency: "GHS",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
   }).format(price);
 }
-
-export const ADMIN_EMAIL = "info@donkorandsons.com";

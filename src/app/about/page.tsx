@@ -36,22 +36,22 @@ const team = [
   {
     name: "Elder Joseph Mensah",
     role: "Founder & Director",
-    image: "https://images.pexels.com/photos/2218786/pexels-photo-2218786.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "/gilbert%20images/Whisk_4dcc3c7880dd974b7a347d3bf90d93a6dr.jpeg"
   },
   {
     name: "Grace Osei-Bonsu",
     role: "Operations Manager",
-    image: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "/gilbert%20images/Whisk_ejm0ewyxiznihdn10cm0yjytgtnmrtlwktzj1iz.jpeg"
   },
   {
     name: "Samuel Adjei",
     role: "Head of Funeral Services",
-    image: "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "/gilbert%20images/Whisk_99a2caa2e920900b7ca424735a0f99ebdr%20%282%29.jpeg"
   },
   {
     name: "Abena Frimpong",
     role: "Client Relations",
-    image: "https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: "/gilbert%20images/Whisk_230fe286dbd9612b49c42834c2949ec0dr.jpeg"
   },
 ];
 
@@ -111,13 +111,13 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div
-                className="h-80 sm:h-112 rounded-2xl overflow-hidden bg-cover bg-center shadow-xl"
-                style={{
-                  backgroundImage:
-                    "url(/images/logo.png)",
-                }}
-              />
+              <div className="h-80 sm:h-112 rounded-2xl overflow-hidden flex items-center justify-center bg-white shadow-xl">
+                <img
+                  src="/images/nds.png"
+                  alt="Donkor And Sons Logo"
+                  className="max-h-full max-w-full object-contain p-8"
+                />
+              </div>
               <div className="absolute -bottom-6 -left-6 rounded-xl bg-gold p-6 shadow-lg">
                 <p className="font-heading text-3xl font-bold text-primary">25+</p>
                 <p className="text-sm text-primary/70">Years of Service</p>
