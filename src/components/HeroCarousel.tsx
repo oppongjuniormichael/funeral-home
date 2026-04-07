@@ -18,7 +18,7 @@ const slides = [
     title: "Premium Caskets",
     subtitle:
       "A wide selection of finely crafted caskets for a dignified farewell",
-    cta: { label: "View Caskets", href: "/services/furniture-shop" },
+    cta: { label: "View Caskets", href: "/services/rentals?category=caskets" },
   },
   {
     image: "/images/sofa3.jpg",
@@ -60,7 +60,7 @@ export default function HeroCarousel() {
         pagination={{ clickable: true }}
         navigation
         loop
-        className="h-[75vh] min-h-[500px]"
+        className="h-[75vh] min-h-125"
       >
         {slides.map((slide, i) => (
           <SwiperSlide key={i}>
@@ -69,7 +69,7 @@ export default function HeroCarousel() {
               style={{ backgroundImage: `url(${slide.image})` }}
             >
               {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/50 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-r from-primary/80 via-primary/50 to-transparent" />
               {/* Content */}
               <div className="relative z-10 flex h-full items-center">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">

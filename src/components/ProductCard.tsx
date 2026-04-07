@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Eye, Mail, Minus, Plus } from "lucide-react";
+import { Eye, Minus, Plus } from "lucide-react";
 import type { StaticImageData } from "next/image";
-import { buildMailtoLink, formatPrice, ADMIN_EMAIL } from "@/lib/utils";
+import { useRequest } from "@/context/RequestContext";
 import ImageLightbox from "./ImageLightbox";
 
 interface ProductCardProps {
@@ -17,6 +17,9 @@ interface ProductCardProps {
   description: string;
   subCategory?: string;
   type: "booking" | "rental";
+  hideTitleAndPrice?: boolean;
+  hidePrice?: boolean;
+  hideTitle?: boolean;
 }
 
 export default function ProductCard({
@@ -28,17 +31,39 @@ export default function ProductCard({
   description,
   subCategory,
   type,
+  hideTitleAndPrice = false,
+  hidePrice = false,
+  hideTitle = false,
 }: ProductCardProps) {
   const [quantity, setQuantity] = useState(1);
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
-  const mailtoHref = buildMailtoLink({
-    to: ADMIN_EMAIL,
-    itemCode: code,
-    itemName: name,
-    quantity,
-    type,
-  });
+  // single-item mailto removed — cart-based flow preferred
+
+  const { addItem, items, updateQuantity } = useRequest();
+
+  // Keep local quantity in sync with global request when item exists there
+  useEffect(() => {
+    const existing = items.find((i) => i.code === code);
+    if (existing && existing.quantity !== quantity) {
+      setQuantity(existing.quantity);
+    }
+    if (!existing && quantity !== 1) {
+      // if item removed from request, reset local quantity to 1
+      setQuantity(1);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items, code]);
+
+  const handleAddToRequest = () => {
+    const exists = items.find((i) => i.code === code);
+    if (exists) {
+      // set quantity to current selected (don't double-add)
+      updateQuantity(code, quantity);
+    } else {
+      addItem({ code, name, price, priceUnit, image, type }, quantity);
+    }
+  };
 
   return (
     <>
@@ -63,7 +88,7 @@ export default function ProductCard({
               <Eye size={20} className="text-primary" />
             </div>
           </div>
-          {subCategory && (
+          {subCategory && !(hideTitle || hideTitleAndPrice) && (
             <span className="absolute top-3 left-3 rounded-full bg-primary/80 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
               {subCategory}
             </span>
@@ -74,55 +99,72 @@ export default function ProductCard({
         <div className="p-5">
           <div className="flex items-start justify-between gap-2">
             <div>
-              <h3 className="font-heading text-lg font-semibold text-primary leading-snug">
-                {name}
-              </h3>
-              <span className="mt-1 inline-block rounded bg-accent/40 px-2 py-0.5 text-xs font-mono text-text-muted">
-                {code}
-              </span>
-            </div>
-            <div className="text-right shrink-0">
-              <span className="text-xl font-bold text-gold">
-                {formatPrice(price)}
-              </span>
-              {priceUnit && (
-                <span className="block text-xs text-text-muted">{priceUnit}</span>
+              {!(hideTitle || hideTitleAndPrice) ? (
+                <>
+                  <h3 className="font-heading text-lg font-semibold text-primary leading-snug">
+                    {name}
+                  </h3>
+                  <span className="mt-1 inline-block rounded bg-accent/40 px-2 py-0.5 text-xs font-mono text-text-muted">
+                    {code}
+                  </span>
+                </>
+              ) : (
+                // Titles hidden: show only the product code
+                <>
+                  <span className="mt-1 inline-block rounded bg-accent/40 px-2 py-0.5 text-xs font-mono text-text-muted">
+                    {code}
+                  </span>
+                </>
               )}
+
             </div>
+
+            {/* Prices are intentionally hidden across the UI */}
           </div>
 
-          <p className="mt-3 text-sm text-text-muted leading-relaxed line-clamp-2">
+          <p className={hideTitleAndPrice ? "mt-3 text-sm text-text-muted leading-relaxed" : "mt-3 text-sm text-text-muted leading-relaxed line-clamp-2"}>
             {description}
           </p>
 
           {/* Quantity + Book */}
-          <div className="mt-5 flex items-center gap-3">
+            <div className="mt-5 flex items-center gap-3">
             <div className="flex items-center rounded-lg border border-accent/60">
               <button
-                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                onClick={() => {
+                  const newQ = Math.max(1, quantity - 1);
+                  setQuantity(newQ);
+                  // if item already in request, update global quantity too
+                  const exists = items.find((i) => i.code === code);
+                  if (exists) updateQuantity(code, newQ);
+                }}
                 className="px-2.5 py-2 text-text-muted hover:text-primary transition-colors"
                 aria-label="Decrease quantity"
               >
                 <Minus size={14} />
               </button>
-              <span className="min-w-8 text-center text-sm font-medium">
-                {quantity}
-              </span>
+              <span className="min-w-8 text-center text-sm font-medium">{quantity}</span>
               <button
-                onClick={() => setQuantity((q) => q + 1)}
+                onClick={() => {
+                  const newQ = quantity + 1;
+                  setQuantity(newQ);
+                  const exists = items.find((i) => i.code === code);
+                  if (exists) updateQuantity(code, newQ);
+                }}
                 className="px-2.5 py-2 text-text-muted hover:text-primary transition-colors"
                 aria-label="Increase quantity"
               >
                 <Plus size={14} />
               </button>
             </div>
-            <a
-              href={mailtoHref}
-              className="flex-1 flex items-center justify-center gap-2 rounded-lg bg-gold px-4 py-2.5 text-sm font-semibold text-primary hover:bg-gold/90 transition-colors"
+            <div className="flex-1" />
+
+            <button
+              onClick={handleAddToRequest}
+              className="rounded-lg border border-accent/60 px-4 py-2 text-sm font-semibold text-primary hover:bg-accent/10"
             >
-              <Mail size={14} />
-              {type === "booking" ? "Book via Email" : "Rent via Email"}
-            </a>
+              <Plus size={14} className="inline-block mr-2" />
+              Add to Cart
+            </button>
           </div>
         </div>
       </motion.div>

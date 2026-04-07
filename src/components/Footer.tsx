@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin, Clock, Globe, Heart, MessageCircle } from "lucide-react";
+import { Globe, Heart, MessageCircle } from "lucide-react";
+import { contactInfo } from "@/data/contact";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -10,7 +11,7 @@ const quickLinks = [
 
 const serviceLinks = [
   { label: "Furniture Shop", href: "/services/furniture-shop" },
-  { label: "Rental Shop", href: "/services/rentals" },
+  { label: "Funeral Services", href: "/services/rentals" },
 ];
 
 export default function Footer() {
@@ -118,33 +119,53 @@ export default function Footer() {
               Contact Us
             </h4>
             <ul className="space-y-3">
-              <li className="flex items-start gap-3 text-sm">
-                <MapPin size={16} className="mt-0.5 shrink-0 text-gold" />
-                <span>123 Serenity Avenue, Accra, Ghana</span>
-              </li>
-              <li className="flex items-center gap-3 text-sm">
-                <Phone size={16} className="shrink-0 text-gold" />
-                <a href="tel:+233000000000" className="hover:text-gold transition-colors">
-                  +233 (0) 00 000 0000
-                </a>
-              </li>
-              <li className="flex items-center gap-3 text-sm">
-                <Mail size={16} className="shrink-0 text-gold" />
-                <a
-                  href="mailto:info@donkorandsons.com"
-                  className="hover:text-gold transition-colors"
-                >
-                  info@donkorandsons.com
-                </a>
-              </li>
-              <li className="flex items-start gap-3 text-sm">
-                <Clock size={16} className="mt-0.5 shrink-0 text-gold" />
-                <span>
-                  Mon–Fri: 8AM–6PM
-                  <br />
-                  Sat: 9AM–4PM
-                </span>
-              </li>
+              {contactInfo.map((info) => {
+                const isBlock = info.title === "Visit Us" || info.title === "Working Hours";
+                const Icon = info.icon;
+                return (
+                  <li
+                    key={info.title}
+                    className={isBlock ? "flex items-start gap-3 text-sm" : "flex items-center gap-3 text-sm"}
+                  >
+                    <Icon size={16} className={isBlock ? "mt-0.5 shrink-0 text-gold" : "shrink-0 text-gold"} />
+                    <div>
+                      {info.title === "Call Us" &&
+                        info.lines.map((line, i) => {
+                          const tel = line.trim().startsWith("+") ? line.trim() : line.trim().startsWith("0") ? `+233${line.trim().slice(1)}` : line.trim();
+                          return (
+                            <div key={i}>
+                              <a href={`tel:${tel}`} className="hover:text-gold transition-colors">
+                                {line}
+                              </a>
+                            </div>
+                          );
+                        })}
+
+                      {info.title === "Email Us" &&
+                        info.lines.map((line, i) => (
+                          <div key={i}>
+                            <a href={`mailto:${line}`} className="hover:text-gold transition-colors">
+                              {line}
+                            </a>
+                          </div>
+                        ))}
+
+                      {info.title === "Visit Us" && <span>{info.lines.join(", ")}</span>}
+
+                      {info.title === "Working Hours" && (
+                        <span>
+                          {info.lines.map((l, idx) => (
+                            <span key={idx}>
+                              {l}
+                              {idx < info.lines.length - 1 && <br />}
+                            </span>
+                          ))}
+                        </span>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

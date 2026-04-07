@@ -1,29 +1,36 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import AnimatedHero from "@/components/AnimatedHero";
 import CategoryFilter from "@/components/CategoryFilter";
 import ProductCard from "@/components/ProductCard";
 import { rentals } from "@/data/rentals";
 
-const categories = ["All", "Hearses", "Canopies", "Grounds", "Chairs", "Caskets"];
+const categories = ["All", "Hearses", "Canopies", "Grounds", "Chairs", "Caskets", "Lowering Devices"];
 
 export default function RentalsPage() {
-  const [active, setActive] = useState("All");
+  const searchParams = useSearchParams();
+
+  const getInitialActive = () => {
+    const catParam = searchParams?.get("category");
+    if (!catParam) return "All";
+    const normalized = catParam.trim().toLowerCase();
+    const capitalized = normalized.charAt(0).toUpperCase() + normalized.slice(1);
+    return categories.includes(capitalized) ? capitalized : "All";
+  };
+
+  const [active, setActive] = useState(getInitialActive);
 
   const filtered =
-    active === "All"
-      ? rentals
-      : active === "Chairs"
-      ? [] // Chairs button present but fetching disabled for now
-      : rentals.filter((r) => r.category === active.toLowerCase());
+    active === "All" ? rentals : rentals.filter((r) => r.category === active.toLowerCase());
 
   return (
     <>
       <AnimatedHero
         image="https://images.pexels.com/photos/872831/pexels-photo-872831.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        title="Rental Shop"
+        title="Funeral Services"
         subtitle="Hearses, canopies, venues, chairs, and event equipment — available for rent"
       />
 
@@ -36,7 +43,7 @@ export default function RentalsPage() {
             className="text-center mb-10"
           >
             <h2 className="font-heading text-3xl font-bold text-primary">
-              Rental Collection
+              Funeral Collection
             </h2>
             <p className="mt-3 text-text-muted max-w-xl mx-auto">
               Browse our rental items by category. Each item has a unique code —
@@ -64,6 +71,8 @@ export default function RentalsPage() {
                 description={item.description}
                 subCategory={item.subCategory}
                 type="rental"
+                hidePrice={true}
+                hideTitle={true}
               />
             ))}
           </div>
