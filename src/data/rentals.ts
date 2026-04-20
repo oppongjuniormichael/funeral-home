@@ -1,6 +1,6 @@
 import type { StaticImageData } from "next/image";
 import hearse1 from "@/assets/hearse1.jpeg";
-import hearse2 from "@/assets/hearse2.jpg";
+import hearse2 from "@/assets/hearse2.jpeg";
 import hearse3 from "@/assets/hearse3.jpg";
 import canopy1 from "@/assets/canopy1.png";
 import canopy2 from "@/assets/canopy2.jpeg";
