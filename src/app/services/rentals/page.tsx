@@ -4,7 +4,7 @@ import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import AnimatedHero from "@/components/AnimatedHero";
-import grounds1Img from "@/assets/grounds 1.jpg";
+import casket1 from "@/assets/casket1.jpg";
 import CategoryFilter from "@/components/CategoryFilter";
 import ProductCard from "@/components/ProductCard";
 import { rentals } from "@/data/rentals";
@@ -85,7 +85,7 @@ export default function RentalsPage() {
   return (
     <>
       <AnimatedHero
-        image={grounds1Img.src}
+        image={casket1.src}
         title="Funeral Services"
         subtitle="Hearses, canopies, venues, chairs, and event equipment — available for rent"
       />
