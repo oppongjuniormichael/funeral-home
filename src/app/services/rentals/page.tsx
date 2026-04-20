@@ -9,7 +9,7 @@ import CategoryFilter from "@/components/CategoryFilter";
 import ProductCard from "@/components/ProductCard";
 import { rentals } from "@/data/rentals";
 
-const categories = ["All", "Hearses", "Canopies", "Grounds", "Chairs", "Caskets", "Lowering Devices"];
+const categories = ["All", "Hearses", "Canopies", "Chairs", "Caskets", "Lowering Devices"];
 
 function RentalsContent() {
   const searchParams = useSearchParams();

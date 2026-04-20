@@ -5,7 +5,6 @@ import hearse3 from "@/assets/hearse3.jpg";
 import canopy1 from "@/assets/canopy1.png";
 import canopy2 from "@/assets/canopy2.jpeg";
 import canopy3 from "@/assets/canopy3.jpeg";
-import grounds1Img from "@/assets/grounds 1.jpg";
 import casket1 from "@/assets/casket1.jpg";
 import casket2 from "@/assets/casket 2.jpg";
 import metalCasket from "@/assets/Metal casket.jpg";
@@ -25,7 +24,6 @@ export interface RentalItem {
   category:
     | "hearses"
     | "canopies"
-    | "grounds"
     | "chairs"
     | "other"
     | "caskets"
@@ -102,37 +100,7 @@ export const rentals: RentalItem[] = [
     image: canopy3,
     description: "Grand marquee tent for large memorial gatherings and receptions.",
   },
-  // Grounds / Venues
-  {
-    id: "g1",
-    code: "GRD-001",
-    name: "Memorial Garden",
-    category: "grounds",
-    price: 1200,
-    priceUnit: "per day",
-    image: grounds1Img,
-    description: "Beautiful landscaped garden for outdoor memorial services.",
-  },
-  {
-    id: "g2",
-    code: "GRD-002",
-    name: "Indoor Chapel Hall",
-    category: "grounds",
-    price: 1500,
-    priceUnit: "per day",
-    image: woodenCasket,
-    description: "Elegant indoor chapel with seating for 200 guests.",
-  },
-  {
-    id: "g3",
-    code: "GRD-003",
-    name: "Reception Hall",
-    category: "grounds",
-    price: 1000,
-    priceUnit: "per day",
-    image: grounds1Img,
-    description: "Spacious reception hall for after-service gatherings and meals.",
-  },
+  // Grounds / Venues: removed per request
   // Rental Chairs (funeral chair assets mapped to chair codes 111-444)
   {
     id: "ch111",
