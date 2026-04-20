@@ -171,47 +171,7 @@ export default function AboutPage() {
       {/* Stats */}
       <StatsCounter />
 
-      {/* Team */}
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-14"
-          >
-            <span className="text-sm font-medium text-gold tracking-widest uppercase">
-              Our Team
-            </span>
-            <h2 className="mt-3 font-heading text-3xl sm:text-4xl font-bold text-primary">
-              Meet the People Behind Our Mission
-            </h2>
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member, i) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group rounded-2xl border border-accent/40 bg-surface overflow-hidden shadow-sm hover:shadow-lg transition-all"
-              >
-                <div
-                  className="h-64 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                  style={{ backgroundImage: `url(${member.image})` }}
-                />
-                <div className="p-5 text-center">
-                  <h3 className="font-heading text-lg font-semibold text-primary">
-                    {member.name}
-                  </h3>
-                  <p className="mt-1 text-sm text-gold">{member.role}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Team section removed as requested */}
     </>
   );
 }
