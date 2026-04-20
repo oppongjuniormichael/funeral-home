@@ -1,10 +1,10 @@
 import type { StaticImageData } from "next/image";
-import blackHearse from "@/assets/black hearse.jpg";
-import redHearse from "@/assets/red hearse.jpg";
-import richHearse from "@/assets/rich hearse.jpg";
-import canopy from "@/assets/canopy.jpg";
-import canopy2 from "@/assets/canopy 2.jpg";
-import flowerCanopy from "@/assets/flower canopy.jpg";
+import hearse1 from "@/assets/hearse1.jpeg";
+import hearse2 from "@/assets/hearse2.jpg";
+import hearse3 from "@/assets/hearse3.jpg";
+import canopy1 from "@/assets/canopy1.png";
+import canopy2 from "@/assets/canopy2.jpeg";
+import canopy3 from "@/assets/canopy3.jpeg";
 import grounds1Img from "@/assets/grounds 1.jpg";
 import casket1 from "@/assets/casket1.jpg";
 import casket2 from "@/assets/casket 2.jpg";
@@ -46,7 +46,7 @@ export const rentals: RentalItem[] = [
     category: "hearses",
     price: 500,
     priceUnit: "per service",
-    image: blackHearse,
+    image: hearse1,
     description: "Traditional black hearse for dignified funeral processions.",
   },
   {
@@ -56,7 +56,7 @@ export const rentals: RentalItem[] = [
     category: "hearses",
     price: 550,
     priceUnit: "per service",
-    image: redHearse,
+    image: hearse2,
     description: "Elegant luxury vehicle for memorial services and processions.",
   },
 
@@ -67,7 +67,7 @@ export const rentals: RentalItem[] = [
     category: "hearses",
     price: 550,
     priceUnit: "per service",
-    image: richHearse,
+    image: hearse3,
     description: "Elegant luxury vehicle for memorial services and processions.",
   },
 
@@ -79,7 +79,7 @@ export const rentals: RentalItem[] = [
     category: "canopies",
     price: 150,
     priceUnit: "per day",
-    image: canopy,
+    image: canopy1,
     description: "Standard white canopy tent for graveside services, seats 20.",
   },
   {
@@ -99,7 +99,7 @@ export const rentals: RentalItem[] = [
     category: "canopies",
     price: 800,
     priceUnit: "per day",
-    image: flowerCanopy,
+    image: canopy3,
     description: "Grand marquee tent for large memorial gatherings and receptions.",
   },
   // Grounds / Venues
@@ -220,7 +220,7 @@ export const rentals: RentalItem[] = [
     category: "other",
     price: 200,
     priceUnit: "per day",
-    image: flowerCanopy,
+    image: canopy3,
     description: "Professional sound system with microphones and speakers.",
   },
   {
