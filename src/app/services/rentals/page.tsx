@@ -27,6 +27,9 @@ function RentalsContent() {
   const filtered =
     active === "All" ? rentals : rentals.filter((r) => r.category === active.toLowerCase());
 
+  // When the user selects the "Chairs" category, only show the first three chair items
+  const displayed = active === "Chairs" ? filtered.slice(0, 3) : filtered;
+
   return (
     <section className="py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -54,7 +57,7 @@ function RentalsContent() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((item) => (
+          {displayed.map((item) => (
             <ProductCard
               key={item.id}
               code={item.code}
@@ -71,7 +74,7 @@ function RentalsContent() {
           ))}
         </div>
 
-        {filtered.length === 0 && (
+        {displayed.length === 0 && (
           <p className="text-center text-text-muted py-12">
             No rental items found in this category.
           </p>
