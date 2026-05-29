@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Globe, Heart, MessageCircle } from "lucide-react";
 import { contactInfo } from "@/data/contact";
 
@@ -23,8 +24,8 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gold text-primary font-heading font-bold text-lg">
-                D
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white overflow-hidden">
+                <Image src="/images/nds.png" alt="Donkor And Sons Logo" width={40} height={40} className="object-contain p-1" />
               </div>
               <div>
                 <span className="block text-lg font-heading font-bold text-white">

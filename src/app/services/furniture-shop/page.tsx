@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import AnimatedHero from "@/components/AnimatedHero";
 import CategoryFilter from "@/components/CategoryFilter";
 import ProductCard from "@/components/ProductCard";
-import sofaHero from "@/assets/sofa chairs.jpg";
+import sofaHero from "@/assets/sofa-chairs.jpg";
 import { furniture } from "@/data/furniture";
 
 const categories = ["All", "Tables", "Sofa", "Living Room"];

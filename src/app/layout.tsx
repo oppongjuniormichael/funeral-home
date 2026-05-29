@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import RequestProvider from "@/context/RequestContext";
 import RequestDrawer from "@/components/RequestDrawer";
+import FloatingContact from "@/components/FloatingContact";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -36,6 +37,7 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-1 pt-20">{children}</main>
           <RequestDrawer />
+          <FloatingContact />
           <Footer />
         </RequestProvider>
       </body>

@@ -9,12 +9,12 @@ export const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    lines: ["0208140278", "0332020301"],
+    lines: ["0203915510", "0243079555"],
   },
   {
     icon: Mail,
     title: "Email Us",
-    lines: ["info@donkorandsons.com", "bookings@donkorandsons.com"],
+    lines: ["info@donkorandsons.com"],
   },
   {
     icon: Clock,
